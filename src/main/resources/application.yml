@@ -8,7 +8,7 @@ spring:
     password: mypass
   jpa:
     hibernate:
-      ddl-auto: 'create-drop'
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect

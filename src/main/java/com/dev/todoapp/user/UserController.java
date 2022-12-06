@@ -19,4 +19,14 @@ public class UserController {
         return this.userService.getUser();
     }
 
+    @PostMapping("add-user")
+    public void registerNewUser(@RequestBody User user) {
+        this.userService.addNewUser(user);
+    }
+
+    @DeleteMapping("delete-user/{userId}")
+    public void deleteUser(@PathVariable("userId") int userId) {
+        this.userService.deleteUser(userId);
+    }
+
 }

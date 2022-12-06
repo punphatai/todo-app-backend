@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5332/todoappdb
+    url: jdbc:postgresql://localhost:5332/todoapp
     username: myuser
     password: mypass
   jpa:
@@ -13,6 +13,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        globally_quoted_identifiers: true
     show-sql: true
   main:
     web-application-type: servlet

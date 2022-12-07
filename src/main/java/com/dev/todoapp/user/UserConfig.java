@@ -13,17 +13,11 @@ public class UserConfig {
     CommandLineRunner commandLineRunner(UserRepository userRepository){
         return args -> {
             User mimi = new User(
-                    "mimi",
-                    "Mirai",
-                    "Miro",
                     "mirai123",
                     "mirai@gmail.com",
                     "123456"
             );
             User kiki = new User(
-                    "kiki",
-                    "kiii",
-                    "koko",
                     "kiki123",
                     "kiki@gmail.com",
                     "123456"

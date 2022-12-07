@@ -1,6 +1,7 @@
 package com.dev.todoapp.user;
 
 import com.dev.todoapp.task.Task;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class User {
     private String password;
 
     @OneToMany
+    @JsonIgnore
     @JoinColumn(name = "user_id")
     private List<Task> tasks;
 

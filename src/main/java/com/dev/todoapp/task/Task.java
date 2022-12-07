@@ -26,6 +26,7 @@ public class Task {
     @JoinColumn(name = "user_id")
     private User user;
 
+
     public Task(int task_id, String task_detail, LocalDate created_date, LocalDate deadline_date, boolean complete_status) {
         this.task_id = task_id;
         this.task_detail = task_detail;

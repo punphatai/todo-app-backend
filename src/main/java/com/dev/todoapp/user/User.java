@@ -1,6 +1,8 @@
 package com.dev.todoapp.user;
 
 import com.dev.todoapp.task.Task;
+import com.dev.todoapp.taskcomplete.TaskComplete;
+import com.dev.todoapp.trash.Trash;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -27,20 +29,23 @@ public class User {
     @JsonIgnore
     @JoinColumn(name = "user_id")
     private List<Task> tasks;
+    @OneToMany
+    @JsonIgnore
+    @JoinColumn(name = "trash_id_sequence")
+    private List<Trash> trashes;
+    @OneToMany
+    @JsonIgnore
+    @JoinColumn(name = "taskcomplete_id")
+    private List<TaskComplete> taskCompletes;
 
-    public User(Integer user_id,
-                String username,
-                String email,
-                String password) {
+    public User(Integer user_id, String username, String email, String password) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public User(String username,
-                String email,
-                String password) {
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -73,6 +78,14 @@ public class User {
         this.tasks = tasks;
     }
 
+    public void setTrashes(List<Trash> trashes) {
+        this.trashes = trashes;
+    }
+
+    public void setTaskCompletes(List<TaskComplete> taskCompletes) {
+        this.taskCompletes = taskCompletes;
+    }
+
     public Integer getUser_id() {
         return user_id;
     }
@@ -91,6 +104,14 @@ public class User {
 
     public List<Task> getTasks() {
         return tasks;
+    }
+
+    public List<Trash> getTrashes() {
+        return trashes;
+    }
+
+    public List<TaskComplete> getTaskCompletes() {
+        return taskCompletes;
     }
 
     @Override

@@ -1,8 +1,9 @@
 package com.dev.todoapp.user;
 
+import com.dev.todoapp.task.Task;
 import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.List;
 
 @Entity
 public class User {
@@ -16,50 +17,42 @@ public class User {
             strategy = GenerationType.SEQUENCE,
             generator = "user_id_sequence"
     )
-    private Integer id;
-    private String name;
-    private String firstName;
-    private String lastName;
+    private Integer user_id;
     private String username;
     private String email;
     private String password;
 
-    public User(Integer id, String name, String firstName, String lastName, String username, String email, String password) {
-        this.id = id;
-        this.name = name;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Task> tasks;
+
+    public User(Integer user_id,
+                String username,
+                String email,
+                String password) {
+        this.user_id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public User(String name, String firstName, String lastName, String username, String email, String password) {
-        this.name = name;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String username,
+                String email,
+                String password) {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public User(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public User() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public void setUsername(String username) {
@@ -74,20 +67,12 @@ public class User {
         this.password = password;
     }
 
-    public Integer getId() {
-        return id;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     public String getUsername() {
@@ -102,13 +87,14 @@ public class User {
         return password;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "user_id=" + user_id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

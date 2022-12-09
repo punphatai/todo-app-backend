@@ -22,6 +22,7 @@ public class Task {
     private LocalDate created_date;
     private LocalDate deadline_date;
     private boolean complete_status;
+    private boolean delete_status;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -44,6 +45,15 @@ public class Task {
         this.created_date = created_date;
         this.deadline_date = deadline_date;
         this.complete_status = complete_status;
+        this.user = user;
+    }
+
+    public Task(String task_detail, LocalDate created_date, LocalDate deadline_date, boolean complete_status, boolean delete_status, User user) {
+        this.task_detail = task_detail;
+        this.created_date = created_date;
+        this.deadline_date = deadline_date;
+        this.complete_status = complete_status;
+        this.delete_status = delete_status;
         this.user = user;
     }
 
@@ -101,6 +111,10 @@ public class Task {
         return complete_status;
     }
 
+    public boolean isDelete_status() {
+        return delete_status;
+    }
+
     public User getUser() {
         return user;
     }
@@ -113,6 +127,7 @@ public class Task {
                 ", created_date=" + created_date +
                 ", deadline_date=" + deadline_date +
                 ", complete_status=" + complete_status +
+                ", delete_status=" + delete_status +
                 ", user=" + user +
                 '}';
     }

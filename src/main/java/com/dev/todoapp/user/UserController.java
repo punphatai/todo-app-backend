@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/user")
@@ -17,6 +18,11 @@ public class UserController {
     @GetMapping("get-all-user")
     public List<User> getUser() {
         return this.userService.getUser();
+    }
+
+    @GetMapping("get-user-by-id/{user_id}")
+    public Optional<User> getUserById(@PathVariable("user_id") int user_id) {
+        return this.userService.getUserById(user_id);
     }
 
     @PostMapping("add-user")

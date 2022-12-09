@@ -2,7 +2,6 @@ package com.dev.todoapp.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +20,9 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
+    public Optional<User> getUserById(int user_id) {
+        return this.userRepository.findById(user_id);
+    }
 
     public void addNewUser(User user) {
         Optional<User> userOptional = userRepository

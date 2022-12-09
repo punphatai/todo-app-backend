@@ -1,9 +1,5 @@
 package com.dev.todoapp.task;
-
 import com.dev.todoapp.user.User;
-import com.dev.todoapp.user.UserRepository;
-import com.dev.todoapp.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,15 +18,21 @@ public class TaskService {
         return this.taskRepository.findAll();
     }
 
-    public void addNewUserTask(int user_id, Task taskRequest) {
+    public void addNewUserTask(int user_id,
+                               Task taskRequest) {
         User user = new User(user_id);
         Task task = new Task(
                 taskRequest.getTask_detail(),
                 LocalDate.now(),
                 LocalDate.now(),
                 false,
+                false,
                 user
         );
         taskRepository.save(task);
+    }
+
+    public List<Task> getTaskByUserId(int user_id) {
+        return this.taskRepository.findTaskByUserId(user_id);
     }
 }

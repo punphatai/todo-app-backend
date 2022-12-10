@@ -64,6 +64,10 @@ public class Task {
         this.complete_status = complete_status;
     }
 
+    public Task(int task_id) {
+        this.task_id = task_id;
+    }
+
     public Task() {
     }
 

@@ -30,6 +30,11 @@ public class UserController {
         this.userService.addNewUser(user);
     }
 
+    @PutMapping("edit-user/{user_id}")
+    public void editUser(@RequestBody User userRequest , @PathVariable("user_id") int user_id) {
+        this.userService.editUser(userRequest, user_id);
+    }
+
     @DeleteMapping("delete-user/{userId}")
     public void deleteUser(@PathVariable("userId") int userId) {
         this.userService.deleteUser(userId);

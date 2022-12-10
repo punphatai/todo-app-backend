@@ -31,4 +31,9 @@ public class TaskController {
     public void addUserTask(@PathVariable int user_id,  @RequestBody Task taskRequest){
         this.taskService.addNewUserTask(user_id, taskRequest);
     }
+
+    @DeleteMapping("delete-task-by-user-id/{user_id}/{task_id}")
+    public void deleteTaskByUserId(@PathVariable("user_id") int user_id, int task_id) {
+        this.taskService.deleteTaskByUserId(user_id);
+    }
 }

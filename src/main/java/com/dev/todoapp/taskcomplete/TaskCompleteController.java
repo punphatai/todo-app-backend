@@ -1,8 +1,6 @@
 package com.dev.todoapp.taskcomplete;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,10 @@ public class TaskCompleteController {
     @GetMapping("")
     public List<TaskComplete> getTaskComplete() {
         return this.taskCompleteService.getTaskComplete();
+    }
+
+    @PostMapping("add-task-complete-by-user-id/{user_id}/{task_id}")
+    public void addTaskCompleteByUserId(@PathVariable("user_id") int user_id, @PathVariable("task_id") int task_id) {
+        this.taskCompleteService.addTaskCompleteByUserId(user_id, task_id);
     }
 }

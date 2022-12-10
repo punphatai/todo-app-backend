@@ -43,4 +43,15 @@ public class UserService {
         }
         this.userRepository.deleteById(userId);
     }
+
+    public void editUser(User userRequest , int user_id) {
+        System.out.println(userRequest);
+        this.userRepository.findById(user_id)
+                .map(user -> {
+                    user.setUsername(userRequest.getUsername());
+                    user.setEmail(userRequest.getEmail());
+                    user.setPassword(userRequest.getPassword());
+                    return this.userRepository.save(user);
+                });
+    }
 }

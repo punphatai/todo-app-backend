@@ -35,4 +35,8 @@ public class TaskService {
     public List<Task> getTaskByUserId(int user_id) {
         return this.taskRepository.findTaskByUserId(user_id);
     }
+
+    public void deleteTaskByUserId(int user_id) {
+
+    }
 }
